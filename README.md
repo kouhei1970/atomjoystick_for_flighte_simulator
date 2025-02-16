@@ -24,3 +24,7 @@ git clone https://github.com/kouhei1970/atomjoystick_for_flighte_simulator.git
 cd atomjoystick_for_flighte_simulator
 pio run --target upload
 ```
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
