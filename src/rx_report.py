@@ -31,7 +31,7 @@ def main():
         
         print("HIDレポートの受信を開始します (Ctrl+C で終了)...")
         while True:
-            data = device.read(5)  # 1回の読み込みで最大 64 バイト取得
+            data = device.read(8)  # 1回の読み込みで最大 64 バイト取得
             if data:
                 # 受信した生データ（バイト列）を表示
                 print(f"{data[0]:03d}, {data[1]:03d}, {data[2]:03d}, {data[3]:03d}, {data[4]:03d}") # , {data[5]:03d}, {data[6]:03d}, {data[7]:03d}, {data[8]:03d}")

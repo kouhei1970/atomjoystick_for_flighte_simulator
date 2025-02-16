@@ -136,6 +136,7 @@ void joy_update(void)
     #ifdef NEW_ATOM_JOY
     Battery_voltage[1] = getBatteryVoltage(BATTERY_VOLTAGE2);
     #endif
+    
     #if 0
     USBSerial.printf("RX%4d RY%4d LX%4d LY%4d RXMIN%4d RXMAX%4d RYMIN%4d RYMAX%4d LXMIN%4d LXMAX%4d LYMIN%4d LYMAX%4d %3d %3d %3d %3d\n\r", 
                                             stick[RIGHTX],

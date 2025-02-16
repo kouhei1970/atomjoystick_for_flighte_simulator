@@ -31,7 +31,7 @@
 
 USBHIDGamepad Gamepad;
 
-uint8_t Loop_flag = 0;
+volatile uint8_t Loop_flag = 0;
 
 //周期カウンタ割り込み関数
 hw_timer_t * timer = NULL;
@@ -43,12 +43,14 @@ void IRAM_ATTR onTimer()
 
 void setup() {
   //USB-HID Gamepdad初期化
+  //pinMode(0, INPUT_PULLUP); 
   Gamepad.begin();
   USB.begin();
 
   //M5AtomS3初期化
   M5.begin();
   Wire1.begin(38, 39, 400*1000);
+  //USBSerial.begin(115200);
   M5.update();
   M5.Lcd.setRotation( 2 );
   M5.Lcd.setTextFont(2);
@@ -56,8 +58,8 @@ void setup() {
   M5.Lcd.setCursor(0, 0);
   M5.Lcd.fillScreen(BLUE);
   //M5.Lcd.println("StampFly Sim\nJoystick");
-  M5.Lcd.drawCentreString("StampFly Sim", 64, 0, 2);
-  M5.Lcd.drawCentreString("Joystick", 64, 16, 2);
+  //M5.Lcd.drawCentreString("StampFly Sim", 64, 0, 2);
+  //M5.Lcd.drawCentreString("Joystick", 64, 16, 2);
 
   //ジョイスティック更新
   joy_update();
@@ -76,7 +78,9 @@ void loop() {
   uint8_t phi;// = getAileron();
   uint8_t theta;// = getElevator();
   uint8_t psi;// = getRudder();
-  
+  static uint8_t cnt = 0;
+
+
   while(Loop_flag==0);//周期割り込み待ち
   Loop_flag = 0;//周期セマフォクリア
 
@@ -91,5 +95,9 @@ void loop() {
   //Gamepad.leftTrigger(11);
   //Gamepad.rightTrigger(22);
   //Gamepad.hat(3);
-  //Gamepad.pressButton(4);  
+  //Gamepad.pressButton(4); 
+  M5.Lcd.setCursor(0, 0);
+  M5.Lcd.printf("cnt:%03d",cnt);
+  cnt++;
+
 }
