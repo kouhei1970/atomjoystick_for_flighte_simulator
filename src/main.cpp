@@ -57,9 +57,8 @@ void setup() {
   M5.Lcd.setTextColor(WHITE, BLUE);
   M5.Lcd.setCursor(0, 0);
   M5.Lcd.fillScreen(BLUE);
-  //M5.Lcd.println("StampFly Sim\nJoystick");
-  //M5.Lcd.drawCentreString("StampFly Sim", 64, 0, 2);
-  //M5.Lcd.drawCentreString("Joystick", 64, 16, 2);
+  M5.Lcd.drawCentreString("StampFly Sim", 64, 0, 2);
+  M5.Lcd.drawCentreString("Joystick", 64, 16, 2);
 
   //ジョイスティック更新
   joy_update();
@@ -78,8 +77,7 @@ void loop() {
   uint8_t phi;// = getAileron();
   uint8_t theta;// = getElevator();
   uint8_t psi;// = getRudder();
-  static uint8_t cnt = 0;
-
+  //static uint8_t cnt = 0;
 
   while(Loop_flag==0);//周期割り込み待ち
   Loop_flag = 0;//周期セマフォクリア
@@ -96,8 +94,8 @@ void loop() {
   //Gamepad.rightTrigger(22);
   //Gamepad.hat(3);
   //Gamepad.pressButton(4); 
-  M5.Lcd.setCursor(0, 0);
-  M5.Lcd.printf("cnt:%03d",cnt);
-  cnt++;
+  //M5.Lcd.setCursor(0, 0);
+  //M5.Lcd.printf("cnt:%03d",cnt);
+  //cnt++;
 
 }
